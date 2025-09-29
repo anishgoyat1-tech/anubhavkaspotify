@@ -3,7 +3,7 @@ let songs;
 let currFolder;
 async function getSongs(folder) {
     currFolder = folder;
-    let a = await fetch(`http://127.0.0.1:3000/${currFolder}/`)
+    let a = await fetch(`${currFolder}/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -60,7 +60,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`http://127.0.0.1:3000/songs/`)
+    let a = await fetch(`songs/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -73,7 +73,7 @@ async function displayAlbums() {
 
         if(e.href.includes("%5Csongs")){
             let folder = e.href.split("%5C")[2].slice(0, -1);
-            let a = await fetch(`http://127.0.0.1:3000/songs/${folder}/info.json`);
+            let a = await fetch(`songs/${folder}/info.json`);
             let response = await a.json();
             console.log(response);
             cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder="songs/${folder}" class="card">
