@@ -60,7 +60,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`songs/`)
+    let a = await fetch(`/songs/`)
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -98,7 +98,7 @@ async function displayAlbums() {
 
 async function main() {
 
-    await getSongs("songs/happy");
+    await getSongs("/songs/happy");
     playMusic(songs[0].split("%5C")[2].replaceAll("%20", " "), true);
 
     displayAlbums()
